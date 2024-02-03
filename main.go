@@ -1,12 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
-	"runtime"
+
 	// "strings"
+	"runtime"
+
+	osinfo "github.com/JZXHanta/OSInfo"
 )
 
 // TODO: on powershell systeminfo.exe | findstr /C:"OS" returns os info
@@ -17,39 +17,30 @@ import (
 //  ...
 //}
 
-func readLinuxReleaseInfo() {
-	file, err := os.Open("/etc/os-release")
-	if err != nil {
-		log.Fatal(err)
+func moreInfo() {
+	switch runtime.GOOS {
+	case "linux":
+		fmt.Println("OS      : ", osinfo.LinuxDistro())
+		fmt.Println("Version : ", osinfo.LinuxVersion())
+	case "windows":
+		fmt.Println("OS      : ", osinfo.WindowsOS())
+		fmt.Println("Version : ", osinfo.WindowsKernel())
 	}
-	defer file.Close()
-
-	sc := bufio.NewScanner(file)
-	lines := make([]string, 0)
-
-	for sc.Scan() {
-		lines = append(lines, sc.Text())
-	}
-
-	if err := sc.Err(); err != nil {
-		log.Fatal(err)
-	}
-	fmt.Print(lines)
-
 }
 
-func getPlatform() string {
-	const os string = runtime.GOOS
-	return os
-}
+// func getPlatform() string {
+// 	const os string = runtime.GOOS
+// 	return os
+// }
 
-func get_arch() string {
-	const arch string = runtime.GOARCH
-	return arch
-}
+// func get_arch() string {
+// 	const arch string = runtime.GOARCH
+// 	return arch
+// }
 
 func main() {
-	fmt.Println(getPlatform())
-	fmt.Println(get_arch())
-	readLinuxReleaseInfo()
+	// fmt.Println(getPlatform())
+	// fmt.Println(get_arch())
+	// readLinuxReleaseInfo()
+	moreInfo()
 }
