@@ -9,6 +9,14 @@ import (
 	// "strings"
 )
 
+// TODO: on powershell systeminfo.exe | findstr /C:"OS" returns os info
+// TODO: on bash lsb_release -a returns os info
+// TODO: switch runtime.GOOS {
+//	case "windows": ..
+//  case "linux": ..
+//  ...
+//}
+
 func readLinuxReleaseInfo() {
 	file, err := os.Open("/etc/os-release")
 	if err != nil {
