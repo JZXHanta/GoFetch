@@ -25,8 +25,7 @@ func totalMemory() string {
 	total := ((memory.TotalMemory() / 1024) / 1024) / 1000
 	free := ((memory.FreeMemory() / 1024) / 1024) / 1000
 	used := total - free
-	t := int(total)
-	str := fmt.Sprintf("Ram     :  %d / %d GiB", used, t)
+	str := fmt.Sprintf("Ram     :  %d / %d GiB", used, total)
 	return str
 }
 
