@@ -2,20 +2,13 @@ package main
 
 import (
 	"fmt"
-
-	// "strings"
 	"runtime"
 
-	osinfo "github.com/JZXHanta/OSInfo"
-)
+	"golang.org/x/sys/windows"
 
-// TODO: on powershell systeminfo.exe | findstr /C:"OS" returns os info
-// TODO: on bash lsb_release -a returns os info
-// TODO: switch runtime.GOOS {
-//	case "windows": ..
-//  case "linux": ..
-//  ...
-//}
+	osinfo "github.com/JZXHanta/OSInfo"
+	"github.com/pbnjay/memory"
+)
 
 func moreInfo() {
 	switch runtime.GOOS {
@@ -28,19 +21,23 @@ func moreInfo() {
 	}
 }
 
-// func getPlatform() string {
-// 	const os string = runtime.GOOS
-// 	return os
-// }
-
-// func get_arch() string {
-// 	const arch string = runtime.GOARCH
-// 	return arch
-// }
+func totalMemory() string {
+	total := ((memory.TotalMemory() / 1024) / 1024) / 1000
+	free := ((memory.FreeMemory() / 1024) / 1024) / 1000
+	used := total - free
+	t := int(total)
+	str := fmt.Sprintf("Ram     :  %d / %d GiB", used, t)
+	return str
+}
 
 func main() {
 	// fmt.Println(getPlatform())
 	// fmt.Println(get_arch())
 	// readLinuxReleaseInfo()
 	moreInfo()
+	fmt.Println(totalMemory())
+	computerName, _ := windows.ComputerName()
+	fmt.Println(computerName)
+	maj, min, build := windows.RtlGetNtVersionNumbers()
+	fmt.Println(maj, min, build)
 }
