@@ -9,6 +9,7 @@ import (
 
 	osinfo "github.com/JZXHanta/OSInfo"
 	// "github.com/mohae/joefriday/cpu/cpuinfo"
+	"github.com/mackerelio/go-osstat/uptime"
 	"github.com/pbnjay/memory"
 	"github.com/shirou/gopsutil/v3/cpu"
 )
@@ -34,6 +35,13 @@ func cpuInfo() string {
 
 	}
 	return fmt.Sprintf("CPU     : %s", c)
+}
+
+func upTime() string {
+	uptime, _ := uptime.Get()
+	str := uptime.String()
+
+	return fmt.Sprintf("Uptime  : %s", str)
 }
 
 func osInfo() (string, string) {
@@ -76,22 +84,21 @@ func goFetch() {
 	SEP := "------------------------"
 	MEMUSED := totalMemory()
 	CPU := cpuInfo()
+	UPTIME := upTime()
 
 	fmt.Println("")
 	fmt.Println(USERATHOST) // "User @ Hostname"
 	fmt.Println(SEP)        // "-----------------------"
 	fmt.Println(OS)         // "OS      :  Microsoft Windows 11 Pro"
 	fmt.Println(VER)        // "Version :  22621"
-	fmt.Println(MEMUSED)
-	// "Ram     :  9 / 32 GiB"
+	fmt.Println(MEMUSED)    // "Ram     :  9 / 32 GiB"
 	// TODO: (below)
 	// Add TOML config file?
-	// fmt.Println(UPTIME)
+	fmt.Println(UPTIME)
 	// fmt.Println(PACKAGES)
 	// fmt.Println(SHELL)
 	// fmt.Println(RESOLUTION)
 	// fmt.Println(TERMINAL)
-	// fmt.Println(CPU)
 	fmt.Println(CPU) // "CPU     : AMD Ryzen 5 3600 6-Core Processor"
 	// fmt.Println(GPU)
 	// fmt.Println(DISKUSED)
