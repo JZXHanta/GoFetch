@@ -151,12 +151,9 @@ func linuxPackages() string {
 }
 
 func aptPackages() string {
-	cmd := "apt-mark"
-	arg1 := "showmanual"
-	arg2 := "|"
-	arg3 := "wc"
-	arg4 := "-l"
-	out, err := exec.Command("bash", "-c", cmd, arg1, arg2, arg3, arg4).Output()
+	cmd := "'apt-mark showmanual | wc -l'"
+
+	out, err := exec.Command("bash", "-c", cmd).Output()
 	if err != nil {
 		fmt.Println(err.Error())
 	}
