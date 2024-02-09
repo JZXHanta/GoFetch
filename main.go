@@ -102,7 +102,7 @@ func userNameLinux() string {
 	if err != nil {
 		log.Fatal(err)
 	}
-	h := fmt.Sprint(string(out))
+	h := fmt.Sprint(strings.TrimSpace(string(out)))
 	return fmt.Sprintf("%s @ %s", u, h)
 }
 
