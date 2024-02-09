@@ -122,7 +122,7 @@ func chocoPackages() (string, error) {
 }
 
 func wingetPackages() (string, error) {
-	out, err := exec.Command("powershell", "-NoProfile", "-NonInteractive", "(winget list).Count").Output()
+	out, err := exec.Command("powershell", "-NoProfile", "-NonInteractive", "(winget list --scope user).Count").Output()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -182,17 +182,22 @@ func packageCount() string {
 	switch runtime.GOOS {
 	case "linux":
 		pkg := linuxPackages()
-		str = fmt.Sprint(pkg) // Sprint will be used properly later...
+		str = fmt.Sprint(pkg)
 	case "windows":
 		chocoCount, chocoErr := chocoPackages()
 		if chocoErr != nil {
+			log.Fatalf(chocoErr.Error())
+		} else {
 			packageCount = append(packageCount, chocoCount)
 		}
+
 		wingetCount, wingetErr := wingetPackages()
 		if wingetErr != nil {
+			log.Fatalf(wingetErr.Error())
+		} else {
 			packageCount = append(packageCount, wingetCount)
 		}
-		packageCount = append(packageCount, chocoCount)
+
 		if len(packageCount) > 0 {
 			str = strings.Join(packageCount, ", ")
 		} else {
