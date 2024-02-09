@@ -158,7 +158,7 @@ func aptPackages() string {
 	arg4 := "-l"
 	out, err := exec.Command(cmd, arg1, arg2, arg3, arg4).Output()
 	if err != nil {
-		log.Fatalf(err.Error())
+		fmt.Println(err.Error())
 	}
 	str := string(out)
 	return fmt.Sprint(str)
