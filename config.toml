@@ -8,7 +8,7 @@
 [VISUALS]
 USERATHOSTNAME = true
 SEPARATOR = true
-CUSTOM_SEPARATOR = ""
+CUSTOM_SEPARATOR = "~"
 # If setting your own custom ascii art it is recommended that they are 40 characters wide
 CUSTOM_ART = false
 CUSTOM_ASCII_ART = ""
@@ -28,7 +28,7 @@ DISKUSED = false
 [INFO]
 UPTIME = true
 # Setting packages to true will significantly slow down the program
-PACKAGES = true
+PACKAGES = false
 RESOLUTION = false
 
 

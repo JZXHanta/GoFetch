@@ -214,10 +214,10 @@ func allInfo() []string {
 	var newSep string
 	if SEPARATOR && CUSTOM_SEPARATOR != "" {
 		sep := CUSTOM_SEPARATOR
-		for i := 0; i < 1; i++ {
+		for i := 0; i < 25; i++ {
 			newSep += sep
 		}
-		array = append(array, sep)
+		array = append(array, newSep)
 	} else if SEPARATOR {
 		sep := "-"
 		for i := 0; i < 25; i++ {
@@ -305,6 +305,11 @@ func render() {
 		PrintLogo(UbuntuLogo, UBUNTUCOLOR)
 	case "OS      : Microsoft Windows 11 Pro":
 		PrintLogo(WindowsLogo, OKBLUE)
+	case "OS      : Pop!_OS":
+		PrintLogo(PopOsLogo, OKBLUE)
+	case "Fedora":
+		PrintLogo(FedoraLogo, OKBLUE)
+
 	}
 
 }
@@ -317,8 +322,7 @@ func goFetch() {
 	// fmt.Println(TERMINAL)
 	// fmt.Println(GPU)
 	// fmt.Println(DISKUSED)
-	// maj, min, build := windows.RtlGetNtVersionNumbers()
-	// fmt.Println(maj, min, build)
+
 }
 
 func main() {
