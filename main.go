@@ -145,7 +145,7 @@ func linuxPackages() string {
 	case "OS      : Pop!_OS":
 		PrintLogo(PopOsLogo, OKBLUE)
 	case "OS      : Fedora":
-		PrintLogo(FedoraLogo, OKBLUE)
+		packages = dnfPackages()
 	}
 	return packages
 }
@@ -154,6 +154,19 @@ func aptPackages() string {
 	//cmd := "'apt-mark showmanual'"
 
 	out, err := exec.Command("apt-mark", "showmanual").Output()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	str := strings.Split(string(out), "\n")
+	count := len(str)
+
+	return fmt.Sprint(count)
+}
+
+func dnfPackages() string {
+	//cmd := "'apt-mark showmanual'"
+
+	out, err := exec.Command("dnf", "list", "--installed").Output()
 	if err != nil {
 		fmt.Println(err.Error())
 	}
