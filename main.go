@@ -151,7 +151,7 @@ func linuxPackages() string {
 }
 
 func aptPackages() string {
-	cmd := "apt-mark showmanual | wc -l"
+	cmd := "apt-mark"
 	arg1 := "showmanual"
 	arg2 := "|"
 	arg3 := "wc"
