@@ -158,11 +158,8 @@ func aptPackages() string {
 		fmt.Println(err.Error())
 	}
 	str := strings.Split(string(out), "\n")
-	var count int
-	for i := 0; i < len(str); i++ {
-		count += 1
+	count := len(str)
 
-	}
 	return fmt.Sprint(count)
 }
 
