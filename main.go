@@ -307,7 +307,7 @@ func render() {
 		PrintLogo(WindowsLogo, OKBLUE)
 	case "OS      : Pop!_OS":
 		PrintLogo(PopOsLogo, OKBLUE)
-	case "Fedora":
+	case "OS      : Fedora":
 		PrintLogo(FedoraLogo, OKBLUE)
 
 	}
