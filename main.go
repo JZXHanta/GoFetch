@@ -157,8 +157,13 @@ func aptPackages() string {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	str := string(out)
-	return fmt.Sprint(str)
+	str := strings.Split(string(out), "\n")
+	var count int
+	for i := 0; i < len(str); i++ {
+		count += 1
+
+	}
+	return fmt.Sprint(count)
 }
 
 func packageCount() string {
