@@ -142,19 +142,25 @@ func wingetPackages() (string, error) {
 func packageCount() string {
 	var packageCount []string
 	var str string
-	chocoCount, chocoErr := chocoPackages()
-	if chocoErr != nil {
+	switch runtime.GOOS {
+	case "linux":
+		str = fmt.Sprint("WIP")
+	case "windows":
+		chocoCount, chocoErr := chocoPackages()
+		if chocoErr != nil {
+			packageCount = append(packageCount, chocoCount)
+		}
+		wingetCount, wingetErr := wingetPackages()
+		if wingetErr != nil {
+			packageCount = append(packageCount, wingetCount)
+		}
 		packageCount = append(packageCount, chocoCount)
-	}
-	wingetCount, wingetErr := wingetPackages()
-	if wingetErr != nil {
-		packageCount = append(packageCount, wingetCount)
-	}
-	packageCount = append(packageCount, chocoCount)
-	if len(packageCount) > 0 {
-		str = strings.Join(packageCount, ", ")
-	} else {
-		str = packageCount[0]
+		if len(packageCount) > 0 {
+			str = strings.Join(packageCount, ", ")
+		} else {
+			str = packageCount[0]
+		}
+
 	}
 
 	return fmt.Sprintf("Packages: %s", str)
