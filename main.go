@@ -100,7 +100,12 @@ func userNameLinux() string {
 		log.Fatalf(err.Error())
 	}
 	u := currentUser.Username
-	return fmt.Sprintf("%s @ hostname", u)
+	out, err := exec.Command("hostname").Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	h := fmt.Sprint(string(out))
+	return fmt.Sprintf("%s @ %s", u, h)
 }
 
 func chocoPackages() (string, error) {
