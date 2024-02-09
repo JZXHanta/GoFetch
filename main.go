@@ -287,41 +287,32 @@ func allInfo() []string {
 }
 
 func PrintLogo(logo, color string) {
+	arr := allInfo()
 	var array = strings.Split(logo, "\n")
 	for i := 0; i < len(array); i++ {
-		fmt.Println(color, array[i], ENDC)
+		if i < len(arr) {
+			fmt.Println(color, array[i], ENDC, arr[i])
+		} else {
+			fmt.Println(color, array[i], ENDC)
+		}
 	}
 }
 
-func goFetch() {
-	OS, VER := osInfo()
-	USERATHOST := userNameAndHostName()
-	SEP := "------------------------"
-	MEMUSED := totalMemory()
-	CPU := cpuInfo()
-	UPTIME := upTime()
-	//PACKAGES := packageCount()
-	SHELL := shell()
-
-	fmt.Println("")
-	fmt.Println(USERATHOST) // "User @ Hostname"
-	fmt.Println(SEP)        // "-----------------------"
-	fmt.Println(OS)         // "OS      :  Microsoft Windows 11 Pro"
-	fmt.Println(VER)        // "Version :  22621"
-	fmt.Println(MEMUSED)    // "Ram     :  9 / 32 GiB"
-	fmt.Println(UPTIME)     // "Uptime  :  43h45m45.64s"
-	fmt.Println(CPU)        // "CPU     :  AMD Ryzen 5 3600 6-Core Processor"
-	//fmt.Println(PACKAGES)   // "Packages: (Choco: 19)"
-	fmt.Println(SHELL) // "Shell   : pwsh"
-	fmt.Println("")
-	PrintLogo(WindowsLogo, OKBLUE)
-	// Testing use only
-	a := allInfo()
-	for i := 0; i < len(a); i++ {
-		fmt.Println(a[i])
+func render() {
+	o, _ := osInfo()
+	switch o {
+	case "OS      : Ubuntu":
+		PrintLogo(UbuntuLogo, UBUNTUCOLOR)
+	case "OS      : Microsoft Windows 11 Pro":
+		PrintLogo(WindowsLogo, OKBLUE)
 	}
+
+}
+
+func goFetch() {
+	render()
+
 	// TODO: (below)
-	// Add TOML config file?
 	// fmt.Println(RESOLUTION)
 	// fmt.Println(TERMINAL)
 	// fmt.Println(GPU)
