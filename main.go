@@ -136,12 +136,36 @@ func wingetPackages() (string, error) {
 	return fmt.Sprintf("(Winget: %d)", count), nil
 }
 
+func linuxPackages() string {
+	os, _ := osInfo()
+	var packages string
+	switch os {
+	case "OS      : Ubuntu":
+		packages = aptPackages()
+	case "OS      : Pop!_OS":
+		PrintLogo(PopOsLogo, OKBLUE)
+	case "OS      : Fedora":
+		PrintLogo(FedoraLogo, OKBLUE)
+	}
+	return packages
+}
+
+func aptPackages() string {
+	cmd := "apt-mark showmanual | wc -l"
+	out, err := exec.Command(cmd).Output()
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+	return fmt.Sprint(out)
+}
+
 func packageCount() string {
 	var packageCount []string
 	var str string
 	switch runtime.GOOS {
 	case "linux":
-		str = fmt.Sprint("WIP") // Sprint will be used properly later...
+		pkg := linuxPackages()
+		str = fmt.Sprint(pkg) // Sprint will be used properly later...
 	case "windows":
 		chocoCount, chocoErr := chocoPackages()
 		if chocoErr != nil {

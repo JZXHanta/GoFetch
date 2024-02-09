@@ -28,7 +28,7 @@ DISKUSED = false
 [INFO]
 UPTIME = true
 # Setting packages to true will significantly slow down the program
-PACKAGES = false
+PACKAGES = true
 RESOLUTION = false
 
 
