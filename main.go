@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"os/exec"
 	"os/user"
 	"runtime"
@@ -172,12 +173,8 @@ func shell() string {
 	case "windows":
 		shell = "pwsh"
 	case "linux":
-		out, err := exec.Command("echo $0").Output()
-		if err != nil {
-			log.Fatal(err)
-		}
-		s := fmt.Sprint(string(out))
-		shell = strings.Replace(s, "-", "", 0)
+		s := os.Getenv("SHELL")
+		shell = strings.Replace(s, "/bin/", "", -1)
 	}
 	return fmt.Sprintf("Shell   : %s", shell)
 }
