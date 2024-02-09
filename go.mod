@@ -6,6 +6,7 @@ require (
 	github.com/JZXHanta/OSInfo v0.0.0-20240203053758-5c4d199d091f
 	github.com/mackerelio/go-osstat v0.2.4
 	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58
+	github.com/pelletier/go-toml v1.9.5
 	github.com/shirou/gopsutil/v3 v3.24.1
 )
 
