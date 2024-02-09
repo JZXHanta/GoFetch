@@ -111,7 +111,7 @@ func allInfo() []string {
 	}
 
 	if RESOLUTION {
-		v := "RESOLUTION STILL WIP"
+		v := Resolution()
 		array = append(array, v)
 	}
 
@@ -133,13 +133,13 @@ func PrintLogo(logo, color string) {
 func render() {
 	o, _ := OsInfo()
 	switch o {
-	case "OS      : Ubuntu":
+	case "OS        : Ubuntu":
 		PrintLogo(UbuntuLogo, UBUNTUCOLOR)
-	case "OS      : Microsoft Windows 11 Pro":
+	case "OS        : Microsoft Windows 11 Pro":
 		PrintLogo(WindowsLogo, OKBLUE)
-	case "OS      : Pop!_OS":
+	case "OS        : Pop!_OS":
 		PrintLogo(PopOsLogo, OKBLUE)
-	case "OS      : Fedora":
+	case "OS        : Fedora":
 		PrintLogo(FedoraLogo, OKBLUE)
 
 	}

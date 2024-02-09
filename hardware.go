@@ -27,14 +27,14 @@ func CpuInfo() string {
 		c = cpuinfo[0].ModelName
 
 	}
-	return fmt.Sprintf("CPU     : %s", c)
+	return fmt.Sprintf("CPU       : %s", c)
 }
 
 func TotalMemory() string {
 	total := ((memory.TotalMemory() / 1024) / 1024) / 1000
 	free := ((memory.FreeMemory() / 1024) / 1024) / 1000
 	used := total - free
-	return fmt.Sprintf("Ram     : %d / %d GiB", used, total)
+	return fmt.Sprintf("Ram       : %d / %d GiB", used, total)
 }
 
 // TODO:

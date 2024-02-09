@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/fstanis/screenresolution"
 	"github.com/mackerelio/go-osstat/uptime"
 )
 
@@ -15,7 +16,7 @@ func UpTime() string {
 	uptime, _ := uptime.Get()
 	str := uptime.String()
 
-	return fmt.Sprintf("Uptime  : %s", str)
+	return fmt.Sprintf("Uptime    : %s", str)
 }
 
 func UserNameAndHostName() string {
@@ -60,3 +61,7 @@ func UserNameLinux() string {
 
 // TODO:
 // func Resolution() {}
+func Resolution() string {
+	res := screenresolution.GetPrimary()
+	return fmt.Sprintf("Resolution: %dx%d", res.Width, res.Height)
+}

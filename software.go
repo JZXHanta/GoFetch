@@ -87,11 +87,11 @@ func OsInfo() (string, string) {
 	var ver string
 	switch runtime.GOOS {
 	case "linux":
-		os = fmt.Sprint("OS      : ", osinfo.LinuxDistro())
-		ver = fmt.Sprint("Version : ", osinfo.LinuxVersion())
+		os = fmt.Sprint("OS        : ", osinfo.LinuxDistro())
+		ver = fmt.Sprint("Version   : ", osinfo.LinuxVersion())
 	case "windows":
-		os = fmt.Sprint("OS      : ", osinfo.WindowsOS())
-		ver = fmt.Sprint("Version : ", osinfo.WindowsKernel())
+		os = fmt.Sprint("OS        : ", osinfo.WindowsOS())
+		ver = fmt.Sprint("Version   : ", osinfo.WindowsKernel())
 	}
 	return os, ver
 }
@@ -126,7 +126,7 @@ func PackageCount() string {
 
 	}
 
-	return fmt.Sprintf("Packages: %s", str)
+	return fmt.Sprintf("Packages  : %s", str)
 }
 
 func Shell() string {
@@ -138,7 +138,7 @@ func Shell() string {
 		s := os.Getenv("SHELL")
 		shell = strings.Replace(s, "/bin/", "", -1)
 	}
-	return fmt.Sprintf("Shell   : %s", shell)
+	return fmt.Sprintf("Shell     : %s", shell)
 }
 
 // TODO:
