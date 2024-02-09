@@ -2,16 +2,9 @@ package main
 
 import (
 	"fmt"
-	//"os"
-
-	//"os/user"
-	//"runtime"
-	//"strconv"
 	"strings"
 
-	//"github.com/pbnjay/memory"
 	toml "github.com/pelletier/go-toml"
-	//"github.com/shirou/gopsutil/v3/cpu"
 )
 
 func allInfo() []string {
