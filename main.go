@@ -160,7 +160,8 @@ func aptPackages() string {
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
-	return fmt.Sprint(out)
+	str := string(out)
+	return fmt.Sprint(str)
 }
 
 func packageCount() string {
