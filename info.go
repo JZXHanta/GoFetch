@@ -59,8 +59,6 @@ func UserNameLinux() string {
 	return fmt.Sprintf("%s @ %s", u, h)
 }
 
-// TODO:
-// func Resolution() {}
 func Resolution() string {
 	res := screenresolution.GetPrimary()
 	return fmt.Sprintf("Resolution: %dx%d", res.Width, res.Height)
