@@ -61,5 +61,11 @@ func UserNameLinux() string {
 
 func Resolution() string {
 	res := screenresolution.GetPrimary()
-	return fmt.Sprintf("Resolution: %dx%d", res.Width, res.Height)
+	var str string
+	if res.Width < 1 {
+		str = "No screen found"
+	} else {
+		str = fmt.Sprintf("Resolution: %dx%d", res.Width, res.Height)
+	}
+	return str
 }
