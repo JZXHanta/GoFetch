@@ -83,10 +83,16 @@ func DiskInfoWindows() string {
 }
 
 func DiskInfoLinux() string {
-	cmd := "df"
-	arg := "--total | grep total"
-	out, err := exec.Command(cmd, arg).Output()
-	s := string(out)
+	cmd := exec.Command("df", "--total")
+	grep := exec.Command("grep", "total")
+	pipe, _ := cmd.StdoutPipe()
+	defer pipe.Close()
+	grep.Stdin = pipe
+
+	cmd.Start()
+	res, err := grep.Output()
+
+	s := string(res)
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
