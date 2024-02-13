@@ -49,6 +49,17 @@ func GPUInfoWindows() string {
 	return fmt.Sprintf("GPU       : %s", str)
 }
 
+func GPUInfo() string {
+	var str string
+	switch runtime.GOOS {
+	case "windows":
+		str = GPUInfoWindows()
+	case "linux":
+		str = "WIP"
+	}
+	return str
+}
+
 func DiskInfoWindows() string {
 	cmd, err := exec.Command("powershell", "-NoProfile", "-NonInteractive", "wmic diskdrive get Size").Output()
 	if err != nil {

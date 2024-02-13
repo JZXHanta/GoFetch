@@ -91,7 +91,7 @@ func allInfo() []string {
 	}
 
 	if GPU {
-		v := GPUInfoWindows()
+		v := GPUInfo()
 		array = append(array, v)
 	}
 
