@@ -99,9 +99,9 @@ func DiskInfoLinux() string {
 	}
 	o := strings.TrimSpace(s)
 	list := strings.Split(o, " ")
-	for i := 0; i < len(list); i++ {
-		fmt.Println(list[i])
-	}
+	// for i := 0; i < len(list); i++ {
+	// 	fmt.Println(list[i])
+	// }
 	used, _ := strconv.ParseInt(list[11], 10, 0)
 	avail, _ := strconv.ParseInt(list[12], 10, 0)
 	total := bytesToGB(used + avail)
