@@ -30,7 +30,7 @@ TERMINAL = false
 RAM = true
 CPU = true
 GPU = true
-DISKUSED = false
+DISKUSED = true
 
 [INFO]
 UPTIME = true

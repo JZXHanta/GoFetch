@@ -91,12 +91,12 @@ func allInfo() []string {
 	}
 
 	if GPU {
-		v := GPUInfo()
+		v := GPUInfoWindows()
 		array = append(array, v)
 	}
 
 	if DISKUSED {
-		v := "DISK STILL WIP"
+		v := DiskInfoWindows()
 		array = append(array, v)
 	}
 
