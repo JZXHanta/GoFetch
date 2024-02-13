@@ -49,7 +49,7 @@ func LinuxPackages() string {
 	case "OS      : Ubuntu":
 		packages = AptPackages()
 	case "OS      : Pop!_OS":
-		PrintLogo(PopOsLogo, OKBLUE)
+		packages = AptPackages()
 	case "OS      : Fedora":
 		packages = DnfPackages()
 	}
