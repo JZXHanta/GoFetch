@@ -96,7 +96,7 @@ func allInfo() []string {
 	}
 
 	if DISKUSED {
-		v := DiskInfoWindows()
+		v := DiskInfo()
 		array = append(array, v)
 	}
 

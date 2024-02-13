@@ -72,12 +72,43 @@ func DiskInfoWindows() string {
 	return fmt.Sprintf("DISK      : %s total, %d drives", r, (len(arr) - 3))
 }
 
+func DiskInfoLinux() string {
+	cmd := "df --total | grep total"
+	out, err := exec.Command(cmd).Output()
+	s := string(out)
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+	o := strings.TrimSpace(s)
+	list := strings.Split(o, "\n")
+	used, _ := strconv.ParseInt(list[2], 10, 0)
+	avail, _ := strconv.ParseInt(list[3], 10, 0)
+	total := bytesToGB(used + avail)
+
+	return fmt.Sprintf("DISK      : %s", GBtoString(total))
+}
+
+func bytesToGB(bytes int64) int64 {
+	return ((bytes / 1024) / 1024) / 1024
+}
+
 func GBtoString(gb int64) string {
 	var str string
 	if gb > 1000 {
 		str = fmt.Sprintf("%d TiB", (gb / 1024))
 	} else {
 		str = fmt.Sprintf("%d GiB", gb)
+	}
+	return str
+}
+
+func DiskInfo() string {
+	var str string
+	switch runtime.GOOS {
+	case "windows":
+		str = DiskInfoWindows()
+	case "linux":
+		str = DiskInfoLinux()
 	}
 	return str
 }

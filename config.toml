@@ -36,6 +36,6 @@ DISKUSED = true
 UPTIME = true
 # Setting PACKAGES to true will significantly slow down the program, especially on Windows
 PACKAGES = true
-RESOLUTION = true
+RESOLUTION = false
 
 
