@@ -99,7 +99,7 @@ func DiskInfoLinux() string {
 	o := strings.TrimSpace(s)
 	list := strings.Split(o, " ")
 	for i := 0; i < len(list); i++ {
-		fmt.Print(list[i])
+		fmt.Println(list[i])
 	}
 	used, _ := strconv.ParseInt(list[2], 10, 0)
 	avail, _ := strconv.ParseInt(list[3], 10, 0)
