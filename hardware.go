@@ -101,8 +101,8 @@ func DiskInfoLinux() string {
 	for i := 0; i < len(list); i++ {
 		fmt.Println(list[i])
 	}
-	used, _ := strconv.ParseInt(list[2], 10, 0)
-	avail, _ := strconv.ParseInt(list[3], 10, 0)
+	used, _ := strconv.ParseInt(list[11], 10, 0)
+	avail, _ := strconv.ParseInt(list[12], 10, 0)
 	total := bytesToGB(used + avail)
 
 	return fmt.Sprintf("DISK      : %s", GBtoString(total))
