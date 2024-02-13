@@ -52,10 +52,10 @@ func GPUInfoWindows() string {
 func GPUInfo() string {
 	var str string
 	switch runtime.GOOS {
-	case "windows":
-		str = GPUInfoWindows()
 	case "linux":
 		str = "WIP"
+	case "windows":
+		str = GPUInfoWindows()
 	}
 	return str
 }
