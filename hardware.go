@@ -7,7 +7,6 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
-	"syscall"
 
 	"github.com/pbnjay/memory"
 	"github.com/shirou/gopsutil/v3/cpu"
@@ -43,7 +42,7 @@ func TotalMemory() string {
 
 func GPUInfoWindows() string {
 	info := exec.Command("cmd", "/C", "wmic path win32_VideoController get name")
-	info.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	// info.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 	history, _ := info.Output()
 	str := strings.TrimSpace(strings.Replace(string(history), "Name", "", -1))
 	return fmt.Sprintf("GPU       : %s", str)
