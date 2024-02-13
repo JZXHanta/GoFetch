@@ -16,8 +16,8 @@ func allInfo() []string {
 	var USERATHOSTNAME bool = config.Get("VISUALS.USERATHOSTNAME").(bool)
 	var SEPARATOR bool = config.Get("VISUALS.SEPARATOR").(bool)
 	var CUSTOM_SEPARATOR string = config.Get("VISUALS.CUSTOM_SEPARATOR").(string)
-	//var CUSTOM_ART bool = config.Get("VISUALS.CUSTOM_ART").(bool)
-	//var CUSTOM_ASCII_ART string = config.Get("VISUALS.CUSTOM_ASCII_ART").(string)
+	// var CUSTOM_ART bool = config.Get("VISUALS.CUSTOM_ART").(bool)
+	// var CUSTOM_ASCII_ART string = config.Get("VISUALS.CUSTOM_ASCII_ART").(string)
 
 	// Software
 	var OS bool = config.Get("SOFTWARE.OS").(bool)
@@ -91,7 +91,7 @@ func allInfo() []string {
 	}
 
 	if GPU {
-		v := "GPU STILL WIP"
+		v := GPUInfo()
 		array = append(array, v)
 	}
 

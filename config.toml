@@ -29,7 +29,7 @@ TERMINAL = false
 [HARDWARE]
 RAM = true
 CPU = true
-GPU = false
+GPU = true
 DISKUSED = false
 
 [INFO]
