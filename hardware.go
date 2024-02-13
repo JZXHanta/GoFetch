@@ -82,6 +82,7 @@ func DiskInfoWindows() string {
 	return fmt.Sprintf("DISK      : %s total, %d drives", r, (len(arr) - 3))
 }
 
+// TODO: Math is wrong somewhere in here returns 2 GiB for disk size on linux
 func DiskInfoLinux() string {
 	cmd := exec.Command("df", "--total")
 	grep := exec.Command("grep", "total")
