@@ -24,7 +24,7 @@ CUSTOM_ASCII_ART = ''''''
 OS = true
 VERSION = true
 SHELL = true
-TERMINAL = false
+TERMINAL = true
 
 [HARDWARE]
 RAM = true

@@ -141,5 +141,18 @@ func Shell() string {
 	return fmt.Sprintf("Shell     : %s", shell)
 }
 
+// Returns name of this program not the Terminal, lol
+// TODO: FIX
+// func WindowsTerminal() string {
+// 	cmd, err := exec.Command("pwsh", "-NoProfile", ".\\windows_terminal.ps1").Output()
+
+// 	if err != nil {
+// 		log.Fatalf(err.Error())
+// 	}
+// 	s := string(cmd)
+// 	return fmt.Sprint("TERM:", s)
+
+// }
+
 // TODO:
 // func Terminal() {}

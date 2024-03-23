@@ -76,7 +76,7 @@ func allInfo() []string {
 	}
 
 	if TERMINAL {
-		v := "TERMINAL STILL WIP"
+		v := "Terminal  : WIP"
 		array = append(array, v)
 	}
 
