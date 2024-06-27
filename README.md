@@ -1,2 +1,2 @@
 # GoFetch
-a clone of the popular neofetch utility
+A clone of the popular neofetch utility written in golang
